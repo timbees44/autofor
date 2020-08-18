@@ -1,0 +1,120 @@
+.?Q?, files that are compressed - often by the SQ program.
+7z, 7-Zip compressed file
+AAPKG, ArchestrA IDE
+AAC, Advanced Audio Coding
+ace, ACE compressed file
+ALZ, ALZip compressed file
+APK, Android package: Applications installable on Android; package format of the Alpine Linux distribution
+APPX, Microsoft Application Package (.appx)
+AT3, Sony's UMD data compression
+.bke, BackupEarth.com data compression
+ARC, pre-Zip data compression
+ARC, Nintendo U8 Archive (mostly Yaz0 compressed)
+ARJ, ARJ compressed file
+ASS, a subtitles file created by Aegisub - a video typesetting application (also a Halo game engine file)
+B, (B file) Similar to .a - but less compressed.
+BA, Scifer Archive (.ba) - Scifer External Archive Type
+big, Special file compression format used by Electronic Arts to compress the data for many of EA's games
+BIN, compressed archive - can be read and used by CD-ROMs and Java - extractable by 7-zip and WINRAR
+bjsn, Used to store The Escapists saves on Android.
+BKF, Microsoft backup created by NTBackup.c
+bzip2,
+bld, Skyscraper Simulator Building
+cab, A cabinet (.cab) file is a library of compressed files stored as one file. Cabinet files are used to organize installation files that are copied to the user's system.[2]
+c4, JEDMICS image files - a DOD system
+cals, JEDMICS image files - a DOD system
+CLIPFLAIR, ClipFlair Studio ClipFlair component saved state file (contains component options in XML - extra/attached files and nested components' state in child .clipflair.zip files - activities are also components and can be nested at any depth)
+CPT - SEA, Compact Pro (Macintosh)
+DAA, Closed-format - Windows-only compressed disk image
+deb, Debian install package
+DMG, an Apple compressed/encrypted format
+DDZ," a file which can only be used by the ""daydreamer engine"" created by ""fever-dreamer"" - a program similar to RAGS - it's mainly used to make somewhat short games."
+DN, Adobe Dimension CC file format
+DPE, Package of AVE documents made with Aquafadas digital publishing tools.
+.egg, Alzip Egg Edition compressed file
+EGT, EGT Universal Document also used to create compressed cabinet files replaces .ecab
+ECAB, EGT Compressed Folder used in advanced systems to compress entire system folders - replaced by EGT Universal Document
+ESD, Electronic Software Distribution - a compressed and encrypted WIM File
+ESS, EGT SmartSense File - detects files compressed using the EGT compression system.
+Flipchart file, Used in Promethean ActivInspire Flipchart Software.
+GBP, GBP File Extension - What is a .gbp file and how do I open it? 2 types of files: 1. An archive index file that is created by Genie Timeline [2]. It contains references to the files that the user has chosen to backup; the references can be to an archive file or a batch of files. This files can be opened using Genie-Soft Genie Timeline on Windows. 2. A data output file created by CAD Printed Circuit Board (PCB). This type of file can be opened on Windows using Autodesk EAGLE EAGLE | PCB Design Software | Autodesk - Altium Designer [3] - Viewplot Welcome to Viewplot.com ...For PCB Related Software;...Viewplot The Gerber Viewer & editor in one......PCB Elegance a professional layout package for a affordable price - Gerbv gerbv - A Free/Open Source Gerber Viewer on Mac using Autodesk EAGLE - Gerbv - gEDA gplEDA Homepage and on Linux using Autodesk EAGLE - gEDA - Gerbv
+GHO, Norton Ghost
+GIF, Graphics Interchange Format
+gzip, Compressed file
+HTML, HTML code file
+IPG, Format in which Apple Inc. packages their iPod games. can be extracted through Winrar
+jar, ZIP file with manifest for use with Java applications.
+LBR, Lawrence Compiler Type file
+LBR, Library file
+LQR, LBR Library file compressed by the SQ program.
+LHA, Lempel - Ziv - Huffman
+lzip, Compressed file
+lzo,
+lzma, Lempel-Ziv-Markov chain algorithm compressed file
+LZX,
+MBW, MBRWizard archive
+MHTML, Mine HTML (Hyper-Text Markup Language) code file
+MPQ Archives, Used by Blizzard Entertainment
+BIN, MacBinary
+NTH, Nokia Theme Used by Nokia Series 40 Cellphones
+OAR, OAR archive
+OSK, Compressed osu! skin archive
+OSZ, Compressed osu! beatmap archive
+PAK, Enhanced type of .ARC archive
+PAR, Parchive
+PAF, Portable Application File
+PEA, PeaZip archive file
+PHP, PHP code file
+PYK, Compressed file
+PK3 , Quake 3 archive (See note on Doom³)
+PK4, Doom³ archive (Opens similarly to a zip archive.)
+py, Python code file
+RAR, Rar Archive - for multiple file archive (rar to .r01-.r99 to s01 and so on)
+RAG - RAGS," Game file - a game playable in the RAGS game-engine - a free program which both allows people to create games - and play games - games created have the format ""RAG game file"""
+RaX, Archive file created by RaX
+RPM, Red Hat package/installer for Fedora - RHEL - and similar systems.
+sb, Scratch file
+sb2, Scratch 2.0 file
+sb3, Scratch 3.0 file
+SEN, Scifer Archive (.sen) - Scifer Internal Archive Type
+SIT, StuffIt (Macintosh)
+SIS/SISX, Symbian Application Package
+SKB, Google SketchUp backup File
+SQ, Squish Compressed Archive
+SWM, Splitted WIM File - usually found on OEM Recovery Partition to store preinstalled Windows image - and to make Recovery backup (to USB Drive) easier (due to FAT32 limitations)
+SZS, Nintendo Yaz0 Compressed Archive
+TAR, group of files - packaged as one file
+TGZ, gzipped tar file
+TB, Tabbery Virtual Desktop Tab file
+TIB , Acronis True Image backup
+UHA, Ultra High Archive Compression
+UUE,unified utility engine - the generic and default format for all things UUe-related.
+VIV, Archive format used to compress data for several video games - including Need For Speed: High Stakes.
+VOL, video game data package.
+VSA, Altiris Virtual Software Archive
+WAX, Wavexpress - A ZIP alternative optimized for packages containing video - allowing multiple packaged files to be all-or-none delivered with near-instantaneous unpacking via NTFS file system manipulation.
+WIM, A compressed disk image for installing Windows Vista or higher - Windows Fundamentals for Legacy PC - or restoring a system image made from Backup and Restore (Windows Vista/7)
+XAP, Windows Phone Application Package
+xz, xz compressed files - based on LZMA/LZMA2 algorithm
+Z, Unix compress file
+zoo, based on LZW
+zip, popular compression format
+ISO, The generic format for most optical media - including CD-ROM - DVD-ROM - Blu-ray Disc - HD DVD and UMD.
+NRG, The proprietary optical media archive format used by Nero applications.
+IMG, For archiving DOS formatted floppy disks - larger optical media - and hard disk drives.
+ADF, Amiga Disk Format - for archiving Amiga floppy disks
+ADZ, The GZip-compressed version of ADF.
+DMS, Disk Masher System - a disk-archiving system native to the Amiga.
+DSK, For archiving floppy disks from a number of other platforms - including the ZX Spectrum and Amstrad CPC.
+D64, An archive of a Commodore 64 floppy disk.
+SDI," System Deployment Image - used for archiving and providing ""virtual disk"" functionality."
+MDS, DAEMON tools native disc image format used for making images from optical CD-ROM - DVD-ROM - HD DVD or Blu-ray Disc. It comes together with MDF file and can be mounted with DAEMON Tools.
+MDX, New DAEMON Tools format that allows getting one MDX disc image file instead of two (MDF and MDS).
+DMG, Macintosh disk image files
+CDI, DiscJuggler image file
+CUE, CDRWrite CUE image file
+CIF, Easy CD Creator .cif format
+C2D, Roxio-WinOnCD .c2d format
+DAA, PowerISO .daa format
+B6T, BlindWrite 5/6 image file
+DOS/MBR,Disk Image
