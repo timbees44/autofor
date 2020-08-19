@@ -1,19 +1,22 @@
+# python libraries
 import os
+import sys
 import subprocess
-import filetype
+import shutil
 import zipfile
 import tarfile
 import hashlib
+import json
+import csv
+# dependencies
+import filetype
 import openpyxl
 from tkinter import *
 from tkinter import filedialog
 from simple_term_menu import TerminalMenu
-import json
-from title import header
-import csv
-import shutil
+# autofor python modules
 from tools import Tools
-import sys
+from title import header
 
 
 # class for Forensic Environment. This stores variables for the forensic environment that might need to be called at later stages of the program
