@@ -15,8 +15,8 @@ from tkinter import *
 from tkinter import filedialog
 from simple_term_menu import TerminalMenu
 # autofor python modules
-from tools import Tools
-from title import header
+from autofor.tools import Tools
+from autofor.title import header
 
 
 # class for Forensic Environment. This stores variables for the forensic environment that might need to be called at later stages of the program
