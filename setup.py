@@ -27,13 +27,17 @@ setup(
     author="Tim Burry",
     author_email="s5224241@bournemouth.ac.uk",
     url="https://github.com/timbees44/autofor",
-    calssifiers=[
+    classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Digital Forensic Students and Professionals",
-        "Topic :: Digital Forensics :: Automation :: Education ""
-    ]
+        "Topic :: Digital Forensics :: Automation :: Education",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.8"
+    ],
     packages=find_packages(),
-    package_data={"katana": ["templates/*"]},
-    entry_points={"console_scripts": ["katana=katana.__main__:main"]},
+    package_data={
+        "config_files": ["excel_temp.xlsx", "file_sigs.csv"],
+        "case_logs": [".gitignore"]
+    },
     install_requires=dependencies,
 )
