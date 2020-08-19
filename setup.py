@@ -34,7 +34,7 @@ setup(
         "Programming Language :: Python :: 3.8"
     ],
     packages=find_packages(),
-    package_data={"autofor": ["config_files/*", "case_logs/*"]},
+    include_package_data=True,
     entry_points={"console_scripts": ["autofor=autofor.__main__:main"]},
     install_requires=dependencies,
 )
