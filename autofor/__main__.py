@@ -1,7 +1,7 @@
 # import autofor modules
-from environmentsetup import EnvironmentSetup
-from tools import Tools
-from title import header
+import EnvironmentSetup
+import Tools
+import title
 
 # create main function
 
