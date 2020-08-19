@@ -14,7 +14,6 @@ from setuptools import setup, find_packages
 dependencies = [
     "filetype",
     "openpyxl",
-    "tkinter",
     "simple_term_menu",
     "pandas"
 ]
