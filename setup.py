@@ -35,8 +35,9 @@ setup(
     ],
     packages=find_packages(),
     package_data={
-        "config_files": ["excel_temp.xlsx", "file_sigs.csv"],
-        "case_logs": [".gitignore"]
+        "excel_temp.xlsx": ["config_files/excel_temp.xlsx"],
+        "file_sigs.csv": ["config_files/file_sigs.csv"]
+        "case_logs": ["case_logs/*"]
     },
     entry_points={"console_scripts": ["autofor=autofor.__main__:main"]},
     install_requires=dependencies,

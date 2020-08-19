@@ -169,8 +169,8 @@ class EnvironmentSetup:
     def casename(self):
         cname = input("Please type a case name/number: ")
         self.case_name = cname
-        self.configmake(self.case_name)
-        self.configupdate()
+        # self.configmake(self.case_name)
+        # self.configupdate()
 
     # user chooses securestore path
     def choosesecurestore(self, case):
@@ -324,7 +324,8 @@ class EnvironmentSetup:
     # allows for config file update with key variables
     def configupdate(self):
         config_path = os.path.dirname(os.path.abspath(
-            "case_logs/.anchor")) + f"/{self.case_name}.json"
+            "case_logs/*")) + f"/{self.case_name}.json"
+        print(config_path)
 
         with open(config_path, 'r') as f:
             config = json.load(f)
