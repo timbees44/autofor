@@ -33,8 +33,7 @@ setup(
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.8"
     ],
-    package_dir={'': 'autofor'},
-    packages=find_packages(where='autofor'),
+    packages=find_packages(),
     package_data={
         "config_files": ["excel_temp.xlsx", "file_sigs.csv"],
         "case_logs": [".gitignore"]
