@@ -409,9 +409,3 @@ class Tools:
                     # automatically delete directories with no extractions as not useful for this part of investigation
                     print(out_dir)
                     os.system(f"rm -r '{out_dir}'")
-
-
-ss = "/home/tim/Documents/securestore_123/logical/009"
-mount = ""
-wordlist = "123"
-Tools().carver("/home/tim/Documents/securestore_123", mount)
