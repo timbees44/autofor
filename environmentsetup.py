@@ -34,7 +34,6 @@ class EnvironmentSetup:
 
     # start menu
     def startmenu(self):
-        header()
         start_menu_title = "Please select an option to get started."
         start_menu_items = ["New Investigation",
                             "Continue Investigation - WIP"]
@@ -51,6 +50,9 @@ class EnvironmentSetup:
                 self.casename()
                 self.choosesecurestore(self.case_name)
                 self.fileselection()
+                self.secstorebuild()
+                self.spreadsheet(self.secure_store_location, self.case_name)
+                self.evidencetype(self.evidence, self.secure_store_location)
                 start_menu_exit = True
 
             # item "1" is option to continue with a case.
@@ -93,7 +95,6 @@ class EnvironmentSetup:
 
     # main menu for case continuation and other tools
     def mainmenu(self):
-        header()
         main_menu_title = "Please select from the following options!"
         main_menu_items = ["Start/Continue Investigation", "Examine evidence analysis",
                            "Word/Term Search", "Take hash(es)", "Exit"]
@@ -315,7 +316,7 @@ class EnvironmentSetup:
                   "MountPoint": ""}
 
         config_path = os.path.dirname(os.path.abspath(
-            "case_logs/.anchor")) + f"/{cname}.json"
+            "case_logs/*")) + f"/{cname}.json"
 
         with open(config_path, "w") as f:
             json.dump(config, f)
