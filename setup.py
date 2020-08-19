@@ -33,10 +33,12 @@ setup(
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.8"
     ],
-    packages=find_packages(),
+    package_dir={'': 'autofor'},
+    packages=find_packages(where='autofor'),
     package_data={
         "config_files": ["excel_temp.xlsx", "file_sigs.csv"],
         "case_logs": [".gitignore"]
     },
+    entry_points={"console_scripts": ["autofor=autofor.__main__:main"]},
     install_requires=dependencies,
 )
