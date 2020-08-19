@@ -1,0 +1,3 @@
+include README
+include config_files/*
+include case_logs/*

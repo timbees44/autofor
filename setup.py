@@ -34,11 +34,7 @@ setup(
         "Programming Language :: Python :: 3.8"
     ],
     packages=find_packages(),
-    package_data={
-        "excel_temp.xlsx": ["config_files/excel_temp.xlsx"],
-        "file_sigs.csv": ["config_files/file_sigs.csv"]
-        "case_logs": ["case_logs/*"]
-    },
+    package_data={"autofor": ["config_files/*", "case_logs/*"]},
     entry_points={"console_scripts": ["autofor=autofor.__main__:main"]},
     install_requires=dependencies,
 )
