@@ -1,24 +1,20 @@
-# import os and subprocess to interact with operating system
-import subprocess
-import os
-# import platform to check what os is being used
-import platform
-# import title.py for heading artwork and intro
-import title
-# import EnvironmentSetup
-from EnvironmentSetup import *
+# import autofor modules
+from environmentsetup import EnvironmentSetup
+from tools import Tools
+from title import header
+
+# create main function
 
 
-# display programme title logo
-title.header()
+def main():
 
-# project name function
+    # call header()
+    header()
 
-# start menu to find file type and make securestore etc
-x = EnvironmentSetup()
-x.startmenu()
-print(x.case_name)
-print(x.secure_store_location)
-print(x.evidence)
-x.secstorebuild()
-x.spreadsheet(x.secure_store_location, x.case_name)
+    # open main menu as a loop
+    while True:
+        EnvironmentSetup().mainmenu()
+
+
+if __name__ == "__main__":
+    main()
