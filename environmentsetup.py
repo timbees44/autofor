@@ -512,17 +512,3 @@ class EnvironmentSetup:
             # Take second hash of logical output for dir
             Tools().hash(self.case_name,
                          f"{sspath}/logical/{filename}", self.secure_store_location)
-
-
-x = EnvironmentSetup()
-"""x.startmenu()
-print(x.case_name)
-print(x.secure_store_location)
-print(x.evidence)
-x.secstorebuild()
-x.spreadsheet(x.secure_store_location, x.case_name)
-x.evidencetype(x.evidence, x.secure_store_location)
-y = Tools()
-y.files(x.secure_store_location, x.mount_point, x.case_name)
-y.dir_tree(x.mount_point, x.secure_store_location)"""
-x.mainmenu()
