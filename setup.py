@@ -35,6 +35,7 @@ setup(
     ],
     packages=find_packages(),
     include_package_data=True,
+    package_data={'': ['config_files/*']},
     entry_points={"console_scripts": ["autofor=autofor.__main__:main"]},
     install_requires=dependencies,
 )
