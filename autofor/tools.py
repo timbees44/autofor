@@ -10,6 +10,7 @@ from simple_term_menu import TerminalMenu
 from tkinter import *
 from tkinter import filedialog
 import re
+from importlib import resources
 
 # a tool class to store the forensic methods we might want to use
 

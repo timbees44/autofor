@@ -304,15 +304,10 @@ class EnvironmentSetup:
 
     # taking spreadsheet template from config files included with programme and saving into secure store with case name
     def spreadsheet(self, sspath, case):
-        stream = pkg_resources.resource_stream(
-            __name__, 'config_files/excel_temp.xlsx')
-        wb = openpyxl.load_workbook(stream)
-        wb.save(f'{sspath}/analysis/spreadsheet_{case}.xlsx')
-
-        """excelsheet = os.path.dirname(os.path.abspath("excel_temp.xlsx"))
+        excelsheet = os.path.dirname(os.path.abspath("excel_temp.xlsx"))
         wb = openpyxl.load_workbook(
             excelsheet + "/config_files/excel_temp.xlsx")
-        wb.save(f'{sspath}/analysis/spreadsheet_{case}.xlsx')"""
+        wb.save(f'{sspath}/analysis/spreadsheet_{case}.xlsx')
 
     # making a config file to allow for persistance with cases. template
     def configmake(self, cname=case_name):
@@ -321,13 +316,10 @@ class EnvironmentSetup:
                         "EvidenceFile": "",
                         "MountPoint": ""}
 
-        stream = pkg_resources.resource_stream(
-            __name__, 'config_files/cases.json')
-
-        """config_path=os.path.dirname(os.path.abspath(
+        config_path = os.path.dirname(os.path.abspath(
             "case_logs/*")) + f"/{cname}.json"""
 
-        with open(stream, "r+") as f:
+        with open(stream, "r+", encoding="utf-8") as f:
             data = json.load(f)
             data.update(config_cname)
             f.seek(0)
