@@ -1,11 +1,7 @@
 # modules to check if required dependencies installed
 import sys
 import subprocess
-import pkg_resources
-
-# import autofor modules
-from environmentsetup import EnvironmentSetup
-from title import header
+import os
 
 
 """
@@ -17,30 +13,51 @@ to the launch of the tool. Due to the small number of dependencies required it
 should not take too long to check before the tool successfully launches.
 """
 # check for dependencies
-# adapted from https://stackoverflow.com/questions/1051254/check-if-python-package-is-installed
 dependencies = [
     "filetype",
     "openpyxl",
-    "simple_term_menu",
+    "simple-term-menu",
     "pandas"
 ]
 
-required = {"filetype",
-            "openpyxl",
-            "simple_term_menu",
-            "pandas"
-            }
-installed = {pkg.key for pkg in pkg_resources.working_set}
-missing = required - installed
+# empty list to append any missing dependencies to
+missing_deps = []
 
-if missing:
-    python = sys.executable
-    subprocess.check_call(
-        [python, '-m', 'pip', 'install', *missing], stdout=subprocess.DEVNULL)
+# check pip3 list of installed python modules
+installed_mods = subprocess.check_output(
+    "pip3 list", stderr=subprocess.STDOUT, shell=True).decode("utf-8")
+# iterate through our dependency list to check if any are missing
+for i in dependencies:
+    # append to 'missing_deps' list if not in pip3 list
+    if i not in installed_mods:
+        missing_deps.append(i)
+
+# check if user is actually missing modules
+if missing_deps == []:
+    pass
+else:
+    # let user know that they need to install certain modules for the tool to run
+    print("You are missing the following modules that autofor needs to run, would you like to install?")
+    print(missing_deps)
+    # allow for user choice
+    user_input = input(
+        "Press \033[94mENTER\033[0m to install or type 'q' to exit")
+    if user_input == "":
+        print(f"Installing {missing_deps}")
+        # using os. Subprocess likely preferred but not as straight forward/robust as os
+        os.system(f"pip3 install {', '.join(missing_deps)}")
+
+    elif user_input == "q" or "quit":
+        # exit program if user
+        sys.exit()
 
 
 # create main function
 def main():
+
+    # import autofor modules
+    from environmentsetup import EnvironmentSetup
+    from title import header
 
     # call header()
     header()
