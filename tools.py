@@ -340,21 +340,24 @@ class Tools:
         if count > 0:
             print(f"No matching strings found in {path}...")
 
-    def regexsearch(self, sspath, mount):
+    def regexsearch(self, sspath, mount, case):
         # may be too lenient
         # modified from emailregex.com
-        re_email = r"(^[\w.+-]+@[\w-]+\.[a-zA-Z0-9-.]+$)"
+        re_email = re.compile(r"(^[\w.+-]+@[\w-]+\.[a-zA-Z0-9-.]+$)")
 
         # the following taken from urlregex.com, ipregex.com and phoneregex.com
 
         # requires start with http(s) to be recognised. Might miss some urls but do remove this condition allows of noise
-        re_url = r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
+        re_url = re.compile(
+            r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+")
 
         # ip addresses
-        re_ip = r"^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$"
+        re_ip = re.compile(
+            r"^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$")
 
         # UK phone numbers
-        re_phone = r"^(?:(?:\(?(?:0(?:0|11)\)?[\s-]?\(?|\+)44\)?[\s-]?(?:\(?0\)?[\s-]?)?)|(?:\(?0))(?:(?:\d{5}\)?[\s-]?\d{4,5})|(?:\d{4}\)?[\s-]?(?:\d{5}|\d{3}[\s-]?\d{3}))|(?:\d{3}\)?[\s-]?\d{3}[\s-]?\d{3,4})|(?:\d{2}\)?[\s-]?\d{4}[\s-]?\d{4}))(?:[\s-]?(?:x|ext\.?|\#)\d{3,4})?$"
+        re_phone = re.compile(
+            r"^(?:(?:\(?(?:0(?:0|11)\)?[\s-]?\(?|\+)44\)?[\s-]?(?:\(?0\)?[\s-]?)?)|(?:\(?0))(?:(?:\d{5}\)?[\s-]?\d{4,5})|(?:\d{4}\)?[\s-]?(?:\d{5}|\d{3}[\s-]?\d{3}))|(?:\d{3}\)?[\s-]?\d{3}[\s-]?\d{3,4})|(?:\d{2}\)?[\s-]?\d{4}[\s-]?\d{4}))(?:[\s-]?(?:x|ext\.?|\#)\d{3,4})?$")
 
         # check if disk image or not
         if mount == "":
@@ -362,26 +365,59 @@ class Tools:
         else:
             path = mount
 
+        # open workbook
+        workbook = f'{sspath}/analysis/spreadsheet_{case}.xlsx'
+        wb = openpyxl.load_workbook(workbook)
+        ws = wb["regex"]
+
+        # excel count
+        count = 2
         # iterate through evidence
         for root, dirs, files in os.walk(path):
             for file in files:
                 p = os.path.join(root, file)
                 # set strings variable
                 f = subprocess.check_output(["strings", p]).decode("utf-8")
+                list_f = (f.split("\n"))
                 # more concise regex variables to allow for easy printing
-                remail = re.findall(re_email, f)
-                rurl = re.findall(re_url, f)
-                rip = re.findall(re_ip, f)
-                rphone = re.findall(re_phone, f)
-                # conditions for each type of regex
-                if remail:
-                    print("Email found in: " + p)
-                if rurl:
-                    print("url found in: " + p)
-                if rip:
-                    print("IP address found in: " + p)
-                if rphone:
-                    print("UK phone number found in: " + p)
+                for i in list_f:
+                    """
+                    Using re.search to find individual matches for each line.
+                    Lines have been simulated using a list created with "\r"
+                    characters that are present in the strings output.
+                    Strings was chosen over opening the file as many files 
+                    can't be open and read.
+                    Re.search, may not be as effective as re.iterate as it may
+                    miss items on some lines. However at the moment it seems to
+                    work the best with the spreadsheet setup.
+                    """
+                    if re.search(re_email, i):
+                        ws["A" + str(count)] = p
+                        ws["B" + str(count)] = p.split("/")[-1]
+                        ws["E" + str(count)] = i
+                        ws["G" + str(count)] = list_f.index(i) + 1
+
+                    elif re.search(re_ip, i):
+                        ws["A" + str(count)] = p
+                        ws["B" + str(count)] = p.split("/")[-1]
+                        ws["C" + str(count)] = i
+                        ws["G" + str(count)] = list_f.index(i) + 1
+
+                    elif re.search(re_phone, i):
+                        ws["A" + str(count)] = p
+                        ws["B" + str(count)] = p.split("/")[-1]
+                        ws["D" + str(count)] = i
+                        ws["G" + str(count)] = list_f.index(i) + 1
+
+                    elif re.search(re_url, i):
+                        ws["A" + str(count)] = p
+                        ws["B" + str(count)] = p.split("/")[-1]
+                        ws["F" + str(count)] = i
+                        ws["G" + str(count)] = list_f.index(i) + 1
+
+                    count += 1
+
+        wb.save(workbook)
 
     def carver(self, sspath, mount, case):
         print("Carving files to check for embedded/composite files...")
@@ -428,3 +464,7 @@ class Tools:
                 count += 1
 
         wb.save(workbook)
+
+
+Tools().regexsearch("/home/tim/Documents/securestore_123",
+                    "/home/tim/Documents/em", "123")
