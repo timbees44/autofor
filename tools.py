@@ -45,11 +45,11 @@ class Tools:
         # get signature csv
         sigcsv = sigcsv = os.path.dirname(
             os.path.abspath("config_files/file_sigs.csv") + "/file_sig.csv")
-        print(sigcsv)
         # iterate through all files and sub file
         count = 2
         for root, dirs, files in os.walk(path, topdown=False):
             for name in files:
+
                 # add full paths to first column
                 p = os.path.join(root, name)
                 ws["A" + str(count)] = p
@@ -81,12 +81,13 @@ class Tools:
                                 ws["E" + str(count)] = row["offset"]
                                 ws["F" + str(count)] = row["description"]
                             # set datetime
-                            ws["H" + str(count)] = datetime.now()
+                            ws["H" + str(count)] = str(datetime.now())
                         elif str(row["header"]) in hexed.upper() and ws["C" + str(count)] == "":
                             ws["G" + str(count)] = row["extension"] + \
                                 ":" + row["header"]
                             # add count to move through rows
-                        count += 1
+                count += 1
+
                 # add count to move through files
 
         wb.save(workbook)
@@ -111,7 +112,7 @@ class Tools:
         except:
             pass
 
-    # intial hash function to be used when file/dir first located on system
+   # intial hash function to be used when file/dir first located on system
 
     def inithash(self, case, sspath, evidence):
         sheetpath = f"{sspath}/analysis/spreadsheet_{case}.xlsx"

@@ -8,6 +8,7 @@ import tarfile
 import hashlib
 import json
 import csv
+import time
 # dependencies
 import filetype
 import openpyxl
@@ -53,6 +54,10 @@ class EnvironmentSetup:
                 self.secstorebuild()
                 self.spreadsheet(self.secure_store_location, self.case_name)
                 self.evidencetype(self.evidence, self.secure_store_location)
+                Tools().files(self.secure_store_location,
+                              self.mount_point, self.case_name)
+                Tools().dir_tree(self.mount_point, self.secure_store_location)
+
                 start_menu_exit = True
 
             # item "1" is option to continue with a case.
@@ -61,7 +66,6 @@ class EnvironmentSetup:
                 # user will need to enter case name/number
                 # this will be used as arg for config read method
                 self.configread()
-                print("Configuration file loaded!")
                 # take another hash depending on whether evidence is disk image or in logical
                 if self.mount_point == "":
                     path = self.secure_store_location + "/logical"
@@ -112,7 +116,11 @@ class EnvironmentSetup:
 
             # show evidence analysis file(s) for user to open and examine
             elif item_sel == 1:
-                print("Feature not available yet")
+                # get case
+                print(
+                    "Analysis documents of evidence can be found in the 'analysis' directory of the securestore path for each case.")
+                time.sleep(5)
+                self.mainmenu()
 
             # item 2 will allow users to search for a partiular word or phrase in all files or a specific file/directory
             elif item_sel == 2:
@@ -373,7 +381,6 @@ class EnvironmentSetup:
                 print("Case parameters retrieved from log file!")
                 print("So long as the location of your securestore and evidence haven't changed you can continue with examination and analysis")
                 Tools().hash(self.case_name, self.evidence, self.secure_store_location)
-                print("You may wish to take another hash of your working evidence (logical folder or mount pos) to insure chain of analysis is maintained!")
 
             # options for if file not found
             else:
