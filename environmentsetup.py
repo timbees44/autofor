@@ -56,6 +56,7 @@ class EnvironmentSetup:
                 self.evidencetype(self.evidence, self.secure_store_location)
                 Tools().files(self.secure_store_location,
                               self.mount_point, self.case_name)
+                Tools().carver(self.secure_store_location, self.mount_point, self.case_name)
                 Tools().dir_tree(self.mount_point, self.secure_store_location)
 
                 start_menu_exit = True

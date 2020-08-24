@@ -383,7 +383,7 @@ class Tools:
                 if rphone:
                     print("UK phone number found in: " + p)
 
-    def carver(self, sspath, mount):
+    def carver(self, sspath, mount, case):
         print("Carving files to check for embedded/composite files...")
         # check all files in mount location or sercure store
         if mount == "":
@@ -394,20 +394,37 @@ class Tools:
         if "foremost" not in os.listdir(sspath + "/tests"):
             os.system(f"mkdir {sspath}/tests/foremost")
 
+        # open workbook to add carved files
+        workbook = f'{sspath}/analysis/spreadsheet_{case}.xlsx'
+        wb = openpyxl.load_workbook(workbook)
+        ws = wb["carved_files"]
+        count = 2
         # iterate through all files in evidence
         for root, dirs, files in os.walk(path):
             for file in files:
                 # set full path
                 p = os.path.join(root, file)
+                # add path to worksheet
+                ws["A" + str(count)] = p
+                # add filename to worksheet
+                ws["B" + str(count)] = p.split("/")[-1]
                 # set file friendly datetime.now() variable to maintain chaing of analysis
                 dt = str(datetime.now()).replace(":", "-").replace(" ", ".")
+                # add datetime to worksheet
+                ws["E" + str(count)] = str(datetime.now())
                 # create unique foremost ouput dirs
                 out_dir = sspath + f"/tests/foremost/fm_{file}_{dt}"
+                # add output path to excel
+                ws["D" + str(count)] = out_dir
                 # run foremost against each file with verbose specifying that all file types are to be retrieved
-                os.system(
-                    f"foremost -t all '{p}' -o '{out_dir}'")
+                subprocess.check_output(
+                    f"foremost -Q -t all '{p}' -o '{out_dir}'", shell=True)
                 # if no files are extracted, there will only be "audit.txt" in output directory
                 if len(os.listdir(out_dir)) == 1:
                     # automatically delete directories with no extractions as not useful for this part of investigation
-                    print(out_dir)
                     os.system(f"rm -r '{out_dir}'")
+
+                # add to count
+                count += 1
+
+        wb.save(workbook)
