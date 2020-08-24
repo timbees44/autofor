@@ -1,6 +1,7 @@
 # modules to check if required dependencies installed
-import importlib.util
 import sys
+import subprocess
+import pkg_resources
 
 # import autofor modules
 from environmentsetup import EnvironmentSetup
@@ -24,22 +25,18 @@ dependencies = [
     "pandas"
 ]
 
-# iterate through dependencies list
-for package in dependencies:
-    # check if the package is installed
-    if package in sys.modules:
-        pass
-    # if not, find the package
-    elif (spec := importlib.util.find_spec(package)) is not None:
-        # set the package to be installed
-        module = importlib.util.module_from_spec(spec)
-        sys.modules[package] = module
-        # install the package
-        spec.loader.exec_module(module)
-        print(f"{package} has been imported")
-    # give warning if package wasn't installed
-    else:
-        print(f"{package} not found. Autofor may fail to run")
+required = {"filetype",
+            "openpyxl",
+            "simple_term_menu",
+            "pandas"
+            }
+installed = {pkg.key for pkg in pkg_resources.working_set}
+missing = required - installed
+
+if missing:
+    python = sys.executable
+    subprocess.check_call(
+        [python, '-m', 'pip', 'install', *missing], stdout=subprocess.DEVNULL)
 
 
 # create main function
