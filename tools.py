@@ -228,6 +228,7 @@ class Tools:
             pass
 
     # terminal based directory tree for quick reference to evidence structure
+    # to be implemented at a later stage - low priority
 
     def dir_tree_terminal(self, mount, sspath):
         # chose mount location for disk images or logical if not
@@ -447,11 +448,11 @@ class Tools:
                 # set file friendly datetime.now() variable to maintain chaing of analysis
                 dt = str(datetime.now()).replace(":", "-").replace(" ", ".")
                 # add datetime to worksheet
-                ws["E" + str(count)] = str(datetime.now())
+                ws["D" + str(count)] = str(datetime.now())
                 # create unique foremost ouput dirs
                 out_dir = sspath + f"/tests/foremost/fm_{file}_{dt}"
                 # add output path to excel
-                ws["D" + str(count)] = out_dir
+                ws["C" + str(count)] = out_dir
                 # run foremost against each file with verbose specifying that all file types are to be retrieved
                 subprocess.check_output(
                     f"foremost -Q -t all '{p}' -o '{out_dir}'", shell=True)
@@ -464,7 +465,3 @@ class Tools:
                 count += 1
 
         wb.save(workbook)
-
-
-Tools().regexsearch("/home/tim/Documents/securestore_123",
-                    "/home/tim/Documents/em", "123")
