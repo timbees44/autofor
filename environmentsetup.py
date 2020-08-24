@@ -311,8 +311,9 @@ class EnvironmentSetup:
                            'history', 'staff', 'tests', 'reports']
                 for folder in folders:
                     os.mkdir(os.path.join(sspath, folder))
-                    print(
-                        f"\033[1; 32; 40mSecure Store made successfully\033[0m at {sspath}")
+
+                print(
+                    f"\033[1; 32; 40mSecure Store made successfully\033[0m at {sspath}")
 
             break
 
@@ -510,7 +511,7 @@ class EnvironmentSetup:
                 f.close()
 
                 Tools().hash(self.case_name,
-                             f"{sspath}/logical/{filename}", self.secure_store_location)
+                             f"{sspath}/logical", self.secure_store_location)
 
         elif os.path.isdir(evidence):
             # zip directory to image folder in securestore
