@@ -23,6 +23,19 @@ dependencies = [
 # empty list to append any missing dependencies to
 missing_deps = []
 
+# let user know about non-pip3 dependencies that need to be checked for
+print("Checking for system dependencies, you may need to enter your password...")
+# install tkinter, exiftool and foremost - check if up to date
+"""
+    The following line isn't ideal. Eventually I'd still like to eliminate
+    the need for running things as sudo. Currently this is the best workaround
+    for the project, within my skill set that continues with the theme of
+    automation. Future versions could be managed in a way similar to the pip3 list
+    check below so that users are aware of what needs to be installed on their system.
+    """
+os.system("sudo apt-get install python3-tk exiftool foremost")
+
+
 # check pip3 list of installed python modules
 installed_mods = subprocess.check_output(
     "pip3 list", stderr=subprocess.STDOUT, shell=True).decode("utf-8")
@@ -45,7 +58,7 @@ else:
     if user_input == "":
         print(f"Installing {missing_deps}")
         # using os. Subprocess likely preferred but not as straight forward/robust as os
-        os.system(f"pip3 install {', '.join(missing_deps)}")
+        os.system(f"pip3 install {' '.join(missing_deps)}")
 
     elif user_input == "q" or "quit":
         # exit program if user
