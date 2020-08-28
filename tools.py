@@ -198,7 +198,9 @@ class Tools:
                     ws["B2"] = sha256.hexdigest()
 
         wb.save(sheetpath)
+        print("hash complete!")
 
+    # build a text based directory tree representation
     def dir_tree(self, mount, sspath):
         # chose mount location for disk images or logical if not
         if mount == "":
@@ -376,9 +378,11 @@ class Tools:
         # iterate through evidence
         for root, dirs, files in os.walk(path):
             for file in files:
+                # print(file)
                 p = os.path.join(root, file)
                 # set strings variable
                 f = subprocess.check_output(["strings", p]).decode("utf-8")
+                # print(f)
                 list_f = (f.split("\n"))
                 # more concise regex variables to allow for easy printing
                 for i in list_f:
@@ -395,10 +399,10 @@ class Tools:
                     if re.search(re_email, i):
                         ws["A" + str(count)] = p
                         ws["B" + str(count)] = p.split("/")[-1]
-                        ws["E" + str(count)] = i
+                        ws["E" + str(count)] = str(i)
                         ws["G" + str(count)] = list_f.index(i) + 1
 
-                    elif re.search(re_ip, i):
+                    elif re.finditer(re_ip, i):
                         ws["A" + str(count)] = p
                         ws["B" + str(count)] = p.split("/")[-1]
                         ws["C" + str(count)] = i
@@ -465,3 +469,6 @@ class Tools:
                 count += 1
 
         wb.save(workbook)
+
+
+Tools().regexsearch("/home/tim/Documents/securestore_123", "", "123")
