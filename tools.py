@@ -167,7 +167,7 @@ class Tools:
         # sheets = wb.sheetnames
         date_time = datetime.now()
         sheet_title = f"hashes{date_time}".replace(":", "")
-        print(sheet_title)
+        # print(sheet_title)
         wb.create_sheet(sheet_title)
         ws = wb[sheet_title]
         ws["A1"] = "path"

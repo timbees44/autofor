@@ -282,7 +282,7 @@ class EnvironmentSetup:
     # this method lays out the terminal menu for users to build their securestore
     def secstorebuild(self):
         sspath = self.secure_store_location
-        print(sspath)
+        # print(sspath)
         while True:
             if os.path.isdir(sspath) and ('image' and 'logical' and 'analysis' and 'notes' and 'history' and 'staff' and 'tests' and 'reports') in os.listdir(sspath):
                 gotsc_menu_title = f"It looks like {sspath} is already a secure store.\nWould you like to use it?"
@@ -341,7 +341,7 @@ class EnvironmentSetup:
     def configupdate(self):
         config_path = os.path.dirname(os.path.abspath(
             "case_logs/*")) + f"/{self.case_name}.json"
-        print(config_path)
+        # print(config_path)
 
         with open(config_path, 'r') as f:
             config = json.load(f)
@@ -493,7 +493,7 @@ class EnvironmentSetup:
             elif tarfile.is_tarfile(imagefile):
                 print(f"Looks like {filename} is a tarfile")
                 print(f"extracting to {sspath}/logical")
-                print(imagefile)
+                # print(imagefile)
                 f = tarfile.open(imagefile)
                 f.extractall(path=f'{sspath}/logical')
                 f.close()
