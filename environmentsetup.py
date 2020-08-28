@@ -119,6 +119,7 @@ class EnvironmentSetup:
             # show evidence analysis file(s) for user to open and examine
             elif item_sel == 1:
                 # get case
+                print("Sorry, this feature is not available yet")
                 print(
                     "Analysis documents of evidence can be found in the 'analysis' directory of the securestore path for each case.")
                 time.sleep(5)
@@ -178,6 +179,7 @@ class EnvironmentSetup:
             # exit program
             elif item_sel == 4:
                 os.system("clear")
+                print("Note! There may still be some mounted drives in '/mnt/...'")
                 sys.exit()
 
     # user enters case name
