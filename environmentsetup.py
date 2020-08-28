@@ -180,6 +180,10 @@ class EnvironmentSetup:
             elif item_sel == 4:
                 os.system("clear")
                 print("Note! There may still be some mounted drives in '/mnt/...'")
+                print(
+                    "You can unmount a file using the 'sudo umount <mount path>' command on the directory")
+                print(
+                    "You may also need to remove the directory using 'sudo rm -r <mount path>'")
                 sys.exit()
 
     # user enters case name
