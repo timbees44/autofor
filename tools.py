@@ -346,7 +346,7 @@ class Tools:
     def regexsearch(self, sspath, mount, case):
         # may be too lenient
         # modified from emailregex.com
-        re_email = re.compile(r"(^[\w.+-]+@[\w-]+\.[a-zA-Z0-9-.]+$)")
+        re_email = re.compile(r"(^[\w.+-]+@[\w-]+\.[a-zA-Z0-9-.])+$")
 
         # the following taken from urlregex.com, ipregex.com and phoneregex.com
 
@@ -378,12 +378,13 @@ class Tools:
         # iterate through evidence
         for root, dirs, files in os.walk(path):
             for file in files:
-                # print(file)
+                print(file)
                 p = os.path.join(root, file)
                 # set strings variable
                 f = subprocess.check_output(["strings", p]).decode("utf-8")
                 # print(f)
-                list_f = (f.split("\n"))
+                list_f = (f.split(" "))
+                # print(list_f)
                 # more concise regex variables to allow for easy printing
                 for i in list_f:
                     """
@@ -396,31 +397,37 @@ class Tools:
                     miss items on some lines. However at the moment it seems to
                     work the best with the spreadsheet setup.
                     """
-                    if re.search(re_email, i):
+                    if re_email.search(str(i)):
+                        print(i)
                         ws["A" + str(count)] = p
                         ws["B" + str(count)] = p.split("/")[-1]
                         ws["E" + str(count)] = str(i)
                         ws["G" + str(count)] = list_f.index(i) + 1
+                        count += 1
 
-                    elif re.finditer(re_ip, i):
+                    elif re_ip.search(i):
+                        print(i)
                         ws["A" + str(count)] = p
                         ws["B" + str(count)] = p.split("/")[-1]
                         ws["C" + str(count)] = i
                         ws["G" + str(count)] = list_f.index(i) + 1
+                        count += 1
 
-                    elif re.search(re_phone, i):
+                    elif re_phone.search(i):
+                        print(i)
                         ws["A" + str(count)] = p
                         ws["B" + str(count)] = p.split("/")[-1]
                         ws["D" + str(count)] = i
                         ws["G" + str(count)] = list_f.index(i) + 1
+                        count += 1
 
-                    elif re.search(re_url, i):
+                    elif re_url.search(i):
+                        print(i)
                         ws["A" + str(count)] = p
                         ws["B" + str(count)] = p.split("/")[-1]
                         ws["F" + str(count)] = i
                         ws["G" + str(count)] = list_f.index(i) + 1
-
-                    count += 1
+                        count += 1
 
         wb.save(workbook)
 
@@ -469,6 +476,3 @@ class Tools:
                 count += 1
 
         wb.save(workbook)
-
-
-Tools().regexsearch("/home/tim/Documents/securestore_123", "", "123")
