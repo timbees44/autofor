@@ -18,7 +18,7 @@ AutoFor is written in Python 3.
 DISCLAIMER
 ----------
 
-autofor has been designed to meet aims and objectives of a master's project. In
+Autofor has been designed to meet aims and objectives of a master's project. In
 it's current state it should **NOT** be treated as a replacement for tried and tested
 digital forensics software.
 
@@ -51,6 +51,9 @@ These are:
 	Foremost is used to recover files. In autofor, it has initially been used to search
 	for embedded or composite files. This can occur when a user concatenates two files.
 
+Autofor will automatically check if these tools are installed. If they aren't it will try
+to install them. If autofor fails to do so, they can be installed manually as shown below
+
 To install these packages you can copy and paste the following...
 
 ```
@@ -63,8 +66,8 @@ Setup
 ------------------
 As autofor is written in python3, which is an interpretive language, it can't easily be
 compiled and installed in the same fashion as some other programs. As such, in it's alpha
-form, autofor can be installed as a python package. Although not the same as installing some
-other binary file, it can be run in a similar fashion from the terminal.
+form, autofor can only be run from the directory it is downloaded to. Packaging the and creating
+a working setup.py is something that will be worked on for future iterations of the project.
 
 - **Downloading from Github**
 
@@ -72,7 +75,7 @@ other binary file, it can be run in a similar fashion from the terminal.
 	GitHub follow these steps:
 
 - **Check you have 'git' installed on your system**
-	- For Debian based Linux distributions, git can be installed by runnning:
+	- For Debian based Linux distributions, git can be installed by running:
 
 	```
 	sudo apt install git
@@ -86,24 +89,20 @@ other binary file, it can be run in a similar fashion from the terminal.
 	git clone https://github.com/timbees44/autofor
 	```
 
-- **Installation**
-	- Navigate to into the autofor directory (`cd autofor`) that has been downloaded.
-	- Using `ls` you should see a "setup.py" file in the directory amongst other folders and files.
-	- To install do the following:
-
-	```
-	sudo python3 setup.py install
-	```
-
-	- Providing the installation has worked, autofor should now be usable from any directory in the terminal
-
 Usage
 ----------------
 **Launching autofor**
-- To launch autofor, you can simply type `autofor` into the terminal and hit Enter
+- To launch autofor, you can simply type `python3 autofor.py` into the terminal and hit Enter
+- As stated above you must be in the directory with the autofor.py file for it to run.
 
 **Working with autofor**
-- 
+- There may be issues with usability as autofor is still in a prototype stage of development.
+- Note that to view a lot of information that autofor extracts you will need to go to the 
+securestore directory that you will make in the early phase of an investigation. From here you 
+will be able to see extracted information in the "analysis" directory, carved files in the "tests"
+directory, the original file in the "image" directory and an extracted/copied file in the "logical"
+directory which will be used for running the tests.
+- For disk images (.dd, .raw) these will have been mounted in "/mnt/...."
 
 
 
